@@ -1,0 +1,291 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "hu.egon.kajplats-zigbee",
+  "version": "1.0.0",
+  "compatibility": ">=12.2.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "KAJPLATS Zigbee",
+    "hu": "KAJPLATS Zigbee"
+  },
+  "description": {
+    "en": "Control IKEA KAJPLATS lights switched from Matter to their hidden Zigbee mode, with full colour support.",
+    "hu": "Matterről a rejtett Zigbee-módba váltott IKEA KAJPLATS lámpák kezelése, teljes színtámogatással."
+  },
+  "category": [
+    "lights"
+  ],
+  "permissions": [],
+  "brandColor": "#0058A3",
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Egon Richárd Tőrös",
+    "email": "toros.egon@gmail.com"
+  },
+  "drivers": [
+    {
+      "name": {
+        "en": "KAJPLATS colour (CWS, Zigbee)",
+        "hu": "KAJPLATS színes (CWS, Zigbee)"
+      },
+      "class": "light",
+      "capabilities": [
+        "onoff",
+        "dim",
+        "light_hue",
+        "light_saturation",
+        "light_temperature",
+        "light_mode"
+      ],
+      "capabilitiesOptions": {
+        "light_temperature": {
+          "title": {
+            "en": "Colour temperature",
+            "hu": "Színhőmérséklet"
+          }
+        }
+      },
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "images": {
+        "small": "/drivers/kajplats_color/assets/images/small.png",
+        "large": "/drivers/kajplats_color/assets/images/large.png",
+        "xlarge": "/drivers/kajplats_color/assets/images/xlarge.png"
+      },
+      "energy": {
+        "approximation": {
+          "usageOn": 9,
+          "usageOff": 0.3
+        }
+      },
+      "zigbee": {
+        "manufacturerName": [
+          "IKEA of Sweden",
+          "IKEA",
+          ""
+        ],
+        "productId": [
+          "KAJPLATS E27 CWS globe 1055lm",
+          "KAJPLATS E14 CWS globe 806lm",
+          "KAJPLATS GU10 CWS 575lm",
+          "KAJPLATS E26 CWS globe 1100lm",
+          "KAJPLATS E12 CWS globe 800lm",
+          "VARMBLIXT table/wall lamp",
+          "KAJPLATS E27 WS globe 470lm",
+          "KAJPLATS E27 WS globe 1055lm",
+          "KAJPLATS GU10 WS 575lm",
+          "KAJPLATS E27 WS globe 1521lm",
+          "KAJPLATS E14 WS globe 806lm",
+          "KAJPLATS E26 WS globe 450lm",
+          "KAJPLATS E26 WS globe 1100lm",
+          "KAJPLATS E26 WS globe 1600lm",
+          "KAJPLATS E12 WS globe 800lm",
+          "KAJPLATS E14 WS B38 CL 470lm",
+          "KAJPLATS E27 WS G95 clear 806lm",
+          "KAJPLATS E27 806lm 95mm smart WS",
+          "KAJPLATS E27 WS G60 clear 470lm",
+          "KAJPLATS E27 470lm smart WS",
+          "KAJPLATS E12 WS B38 CL 450lm",
+          ""
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              3,
+              4,
+              5,
+              6,
+              8,
+              768
+            ],
+            "bindings": [
+              6,
+              8,
+              768
+            ]
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/kajplats_color/assets/icon.svg",
+          "instruction": {
+            "en": "1) Matter reset: switch the bulb off and on 6 times in a row (about 1 s on / 1 s off) until it blinks – it is now in Matter pairing mode.\n2) Zigbee mode: right after that, switch it off and on 12 times in a row. The bulb blinks again when it is in Zigbee pairing mode.\nKeep the bulb close to Homey Pro and start pairing from this driver.",
+            "hu": "1) Matter-párosítás: kapcsold ki-be az izzót egymás után 6-szor (kb. 1 mp be / 1 mp ki), amíg villogni nem kezd – ekkor Matter párosító módban van.\n2) Zigbee-mód: ezután kapcsold ki-be egymás után 12-szer. Az izzó újra villog, amikor Zigbee párosító módba lépett.\nAz izzó legyen közel a Homey Pro-hoz, és ebből a driverből indítsd a párosítást."
+          }
+        }
+      },
+      "id": "kajplats_color",
+      "settings": [
+        {
+          "id": "color_command_mode",
+          "type": "dropdown",
+          "value": "auto",
+          "label": {
+            "en": "Colour command",
+            "hu": "Színparancs"
+          },
+          "hint": {
+            "en": "Which ZCL ColorControl command sets the colour. 'Automatic' uses hue/saturation if the bulb reports support for it, otherwise CIE xy. Change it if colours are wrong.",
+            "hu": "Melyik ZCL ColorControl paranccsal állítja be a színt. Az 'Automatikus' a hue/saturation parancsot használja, ha az izzó jelzi, hogy támogatja, egyébként CIE xy-t. Akkor módosítsd, ha a színek hibásak."
+          },
+          "values": [
+            {
+              "id": "auto",
+              "label": {
+                "en": "Automatic",
+                "hu": "Automatikus"
+              }
+            },
+            {
+              "id": "hs",
+              "label": {
+                "en": "Hue / saturation (moveToHueAndSaturation)",
+                "hu": "Hue / saturation (moveToHueAndSaturation)"
+              }
+            },
+            {
+              "id": "xy",
+              "label": {
+                "en": "CIE xy (moveToColor)",
+                "hu": "CIE xy (moveToColor)"
+              }
+            }
+          ]
+        },
+        {
+          "id": "debug_logging",
+          "type": "checkbox",
+          "value": false,
+          "label": {
+            "en": "Verbose logging",
+            "hu": "Részletes naplózás"
+          },
+          "hint": {
+            "en": "Logs Zigbee commands and the node structure (visible with 'homey app run').",
+            "hu": "Naplózza a Zigbee parancsokat és a node felépítését (a 'homey app run' kimenetében látszik)."
+          }
+        }
+      ]
+    },
+    {
+      "name": {
+        "en": "KAJPLATS white spectrum (WS, Zigbee)",
+        "hu": "KAJPLATS fehér spektrum (WS, Zigbee)"
+      },
+      "class": "light",
+      "capabilities": [
+        "onoff",
+        "dim",
+        "light_temperature"
+      ],
+      "capabilitiesOptions": {
+        "light_temperature": {
+          "title": {
+            "en": "Colour temperature",
+            "hu": "Színhőmérséklet"
+          }
+        }
+      },
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "images": {
+        "small": "/drivers/kajplats_white/assets/images/small.png",
+        "large": "/drivers/kajplats_white/assets/images/large.png",
+        "xlarge": "/drivers/kajplats_white/assets/images/xlarge.png"
+      },
+      "energy": {
+        "approximation": {
+          "usageOn": 9,
+          "usageOff": 0.3
+        }
+      },
+      "zigbee": {
+        "manufacturerName": [
+          "IKEA of Sweden",
+          "IKEA",
+          ""
+        ],
+        "productId": [
+          "KAJPLATS E27 WS globe 470lm",
+          "KAJPLATS E27 WS globe 1055lm",
+          "KAJPLATS GU10 WS 575lm",
+          "KAJPLATS E27 WS globe 1521lm",
+          "KAJPLATS E14 WS globe 806lm",
+          "KAJPLATS E26 WS globe 450lm",
+          "KAJPLATS E26 WS globe 1100lm",
+          "KAJPLATS E26 WS globe 1600lm",
+          "KAJPLATS E12 WS globe 800lm",
+          "KAJPLATS E14 WS B38 CL 470lm",
+          "KAJPLATS E27 WS G95 clear 806lm",
+          "KAJPLATS E27 806lm 95mm smart WS",
+          "KAJPLATS E27 WS G60 clear 470lm",
+          "KAJPLATS E27 470lm smart WS",
+          "KAJPLATS E12 WS B38 CL 450lm",
+          "KAJPLATS E27 CWS globe 1055lm",
+          "KAJPLATS E14 CWS globe 806lm",
+          "KAJPLATS GU10 CWS 575lm",
+          "KAJPLATS E26 CWS globe 1100lm",
+          "KAJPLATS E12 CWS globe 800lm",
+          "VARMBLIXT table/wall lamp",
+          ""
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              3,
+              4,
+              5,
+              6,
+              8,
+              768
+            ],
+            "bindings": [
+              6,
+              8,
+              768
+            ]
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/kajplats_white/assets/icon.svg",
+          "instruction": {
+            "en": "1) Matter reset: switch the bulb off and on 6 times in a row (about 1 s on / 1 s off) until it blinks – it is now in Matter pairing mode.\n2) Zigbee mode: right after that, switch it off and on 12 times in a row. The bulb blinks again when it is in Zigbee pairing mode.\nKeep the bulb close to Homey Pro and start pairing from this driver.",
+            "hu": "1) Matter-párosítás: kapcsold ki-be az izzót egymás után 6-szor (kb. 1 mp be / 1 mp ki), amíg villogni nem kezd – ekkor Matter párosító módban van.\n2) Zigbee-mód: ezután kapcsold ki-be egymás után 12-szer. Az izzó újra villog, amikor Zigbee párosító módba lépett.\nAz izzó legyen közel a Homey Pro-hoz, és ebből a driverből indítsd a párosítást."
+          }
+        }
+      },
+      "id": "kajplats_white",
+      "settings": [
+        {
+          "id": "debug_logging",
+          "type": "checkbox",
+          "value": false,
+          "label": {
+            "en": "Verbose logging",
+            "hu": "Részletes naplózás"
+          },
+          "hint": {
+            "en": "Logs Zigbee commands and the node structure (visible with 'homey app run').",
+            "hu": "Naplózza a Zigbee parancsokat és a node felépítését (a 'homey app run' kimenetében látszik)."
+          }
+        }
+      ]
+    }
+  ]
+}

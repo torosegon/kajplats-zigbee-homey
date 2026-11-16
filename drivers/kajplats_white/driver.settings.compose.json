@@ -1,0 +1,15 @@
+[
+  {
+    "id": "debug_logging",
+    "type": "checkbox",
+    "value": false,
+    "label": {
+      "en": "Verbose logging",
+      "hu": "Részletes naplózás"
+    },
+    "hint": {
+      "en": "Logs Zigbee commands and the node structure (visible with 'homey app run').",
+      "hu": "Naplózza a Zigbee parancsokat és a node felépítését (a 'homey app run' kimenetében látszik)."
+    }
+  }
+]

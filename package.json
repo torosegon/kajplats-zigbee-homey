@@ -1,0 +1,19 @@
+{
+  "name": "hu.egon.kajplats-zigbee",
+  "version": "1.0.0",
+  "description": "Homey app for IKEA KAJPLATS lights running in their hidden Zigbee mode",
+  "main": "app.js",
+  "private": true,
+  "scripts": {
+    "validate": "homey app validate --level debug",
+    "start": "homey app run --remote",
+    "install-app": "homey app install"
+  },
+  "dependencies": {
+    "homey-zigbeedriver": "^2.3.0",
+    "zigbee-clusters": "^3.9.1"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

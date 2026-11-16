@@ -1,0 +1,51 @@
+[
+  {
+    "id": "color_command_mode",
+    "type": "dropdown",
+    "value": "auto",
+    "label": {
+      "en": "Colour command",
+      "hu": "Színparancs"
+    },
+    "hint": {
+      "en": "Which ZCL ColorControl command sets the colour. 'Automatic' uses hue/saturation if the bulb reports support for it, otherwise CIE xy. Change it if colours are wrong.",
+      "hu": "Melyik ZCL ColorControl paranccsal állítja be a színt. Az 'Automatikus' a hue/saturation parancsot használja, ha az izzó jelzi, hogy támogatja, egyébként CIE xy-t. Akkor módosítsd, ha a színek hibásak."
+    },
+    "values": [
+      {
+        "id": "auto",
+        "label": {
+          "en": "Automatic",
+          "hu": "Automatikus"
+        }
+      },
+      {
+        "id": "hs",
+        "label": {
+          "en": "Hue / saturation (moveToHueAndSaturation)",
+          "hu": "Hue / saturation (moveToHueAndSaturation)"
+        }
+      },
+      {
+        "id": "xy",
+        "label": {
+          "en": "CIE xy (moveToColor)",
+          "hu": "CIE xy (moveToColor)"
+        }
+      }
+    ]
+  },
+  {
+    "id": "debug_logging",
+    "type": "checkbox",
+    "value": false,
+    "label": {
+      "en": "Verbose logging",
+      "hu": "Részletes naplózás"
+    },
+    "hint": {
+      "en": "Logs Zigbee commands and the node structure (visible with 'homey app run').",
+      "hu": "Naplózza a Zigbee parancsokat és a node felépítését (a 'homey app run' kimenetében látszik)."
+    }
+  }
+]
